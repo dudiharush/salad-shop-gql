@@ -1,0 +1,28 @@
+{
+  "name": "salad-shop-gql",
+  "version": "1.0.0",
+  "description": "using GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p start-server start-client",
+    "start-server": "cd server && npm start",
+    "start-client": "cd client && npm start",
+    "install": "run-p install-server install-client",
+    "install-server": "cd server && npm i",
+    "install-client": "cd client && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dudiharush/salad-shop-gql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dudiharush/salad-shop-gql/issues"
+  },
+  "homepage": "https://github.com/dudiharush/salad-shop-gql#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

@@ -1,0 +1,33 @@
+.checkout-wrapper{
+    display:inline-block;
+}
+
+
+.buttons-wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons-wrapper>.button{
+    position: relative;
+}
+
+.buttons-wrapper>.button.disabled{
+    background: grey;
+}
+
+.order-details-wrapper{
+    border: 1px dashed black;
+}
+
+.order-details-field{
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    margin: 5px;
+}
+
+.total-price{
+    text-align: start;
+}
+

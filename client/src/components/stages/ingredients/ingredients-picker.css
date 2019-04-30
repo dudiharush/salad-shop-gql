@@ -1,0 +1,27 @@
+.ingredients-picker {
+  display: flex;
+  margin: 5px;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.ingredients-picker > .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ingredients-picker > .info > .name-label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ingredients-picker > .info > .price-label {
+  font-size: 14px;
+  color: black
+}
+
+.ingredients-picker > .amount-picker {
+  width: 40px;
+  height: 20px;
+}
