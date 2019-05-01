@@ -1,0 +1,13 @@
+.error-color {
+  color: red;
+}
+
+.field-name {
+  display: inline-block;
+  margin-top: 14px;
+}
+
+.error-message {
+  font-size: 12px;
+  height: 14px;
+}

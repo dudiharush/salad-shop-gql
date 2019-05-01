@@ -14,6 +14,7 @@ import { IStageEvents } from "../../../models/types";
 import { Query } from "react-apollo";
 import { GET_INGREDIENTS } from "../../queries";
 import { Ingredient } from "../../../models/ingredient";
+import * as validator from "validator";
 
 export const CheckoutPage = ({
   setShowModal,
@@ -23,10 +24,26 @@ export const CheckoutPage = ({
 }) => {
   const { dispatch, state } = useContext(OrderContext);
 
-  useEffect(() => () => setShowModal(false), [setShowModal]);
+  const [validations, setValidations] = React.useState({
+    isEmailValid: true,
+    isFormValidated: false
+  });
 
-  const orderButtonClick = () => setShowModal(true);
+  useEffect(() => {
+    if (Object.values(validations).every(isValid => isValid)) {
+      setShowModal(true);
+    }
+    return () => {
+      setShowModal(false);
+    };
+  }, [setShowModal, ...Object.values(validations)]);
 
+  const orderButtonClick = () => {
+    setValidations({
+      isEmailValid: validator.isEmail(state.email),
+      isFormValidated: true
+    });
+  };
   const goBackButtonClick = () => goToPrev && goToPrev();
 
   return (
@@ -39,6 +56,7 @@ export const CheckoutPage = ({
           ingredientsArr,
           state.ingredientsOrder
         );
+
         return (
           <>
             <div className="page-header">{"Your Salad:"}</div>
@@ -62,14 +80,18 @@ export const CheckoutPage = ({
               </div>
               <div className="order-details-wrapper">
                 <DetailsField
+                  defaultValue={state.name}
                   fieldName="Name"
                   onChange={name => dispatch(setName(name))}
                 />
                 <DetailsField
                   fieldName="Email"
+                  defaultValue={state.email}
                   onChange={email => dispatch(setEmail(email))}
+                  isValid={validations.isEmailValid}
                 />
                 <DetailsField
+                  defaultValue={state.notes}
                   fieldName="Additional Notes"
                   onChange={notes => dispatch(setAdditionalNotes(notes))}
                 />
