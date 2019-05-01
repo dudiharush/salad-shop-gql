@@ -15,18 +15,19 @@ import { Query } from "react-apollo";
 import { GET_INGREDIENTS } from "../../queries";
 import { Ingredient } from "../../../models/ingredient";
 
-export const CheckoutPage = (
-  props: IStageEvents & {
-    setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  }
-) => {
+export const CheckoutPage = ({
+  setShowModal,
+  goToPrev
+}: IStageEvents & {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { dispatch, state } = useContext(OrderContext);
 
-  useEffect(() => () => props.setShowModal(false), []);
+  useEffect(() => () => setShowModal(false), [setShowModal]);
 
-  const orderButtonClick = () => props.setShowModal(true);
+  const orderButtonClick = () => setShowModal(true);
 
-  const goBackButtonClick = () => props.goToPrev && props.goToPrev();
+  const goBackButtonClick = () => goToPrev && goToPrev();
 
   return (
     <Query query={GET_INGREDIENTS}>
